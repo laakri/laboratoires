@@ -1,0 +1,69 @@
+<div class="mainpage" >
+
+<div class="main-cards" >
+  <mat-card class="main-card" >
+    <mat-card-title>Welcome</mat-card-title>
+    <mat-card-subtitle>Saif Dinne</mat-card-subtitle>
+    <mat-divider inset></mat-divider>
+    <mat-card-content><mat-icon >alarm</mat-icon><p>Monday 1:42:00</p></mat-card-content>
+  </mat-card>
+
+  <mat-card class="main-card" >
+    <mat-card-title>Nombre de resultat</mat-card-title>
+    <mat-card-subtitle>15</mat-card-subtitle>
+    <mat-divider inset></mat-divider>
+    <mat-card-content><mat-icon >alarm</mat-icon><p>Monday 17:00:15</p></mat-card-content>
+
+  </mat-card>
+
+  <mat-card class="main-card" >
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-divider inset></mat-divider>
+    <mat-card-content><mat-icon >alarm</mat-icon><p>Monday 17:00:00</p></mat-card-content>
+  </mat-card>
+</div>
+
+
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Object Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date de sortie du résultat </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <!-- resultat Column -->
+      <ng-container matColumnDef="resultat">
+        <th mat-header-cell *matHeaderCellDef> Resultat </th>
+        <td mat-cell *matCellDef="let element"> <a href="{{element.resultat}}" mat-stroked-button color="link" >Télécharger</a></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 30]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,32 @@
+
+
+<form (submit)="onSignup(signupForm)" #signupForm="ngForm" >
+  <h1>ADD USER</h1>
+
+    <mat-icon class="icon" aria-hidden="false" aria-label="croix" mat-dialog-close>clear</mat-icon>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your name</mat-label>
+      <input matInput type="text" ngModel name="nom" #nom="ngModel"  required >
+      <mat-error *ngIf="nom.invalid">you must enter a value</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Enter your Phone</mat-label>
+        <input matInput type="text" ngModel name="tel" #tel="ngModel" pattern="[0-9]+"  maxlength="8" placeholder="Ex. 22666999" required>
+        <mat-error *ngIf="tel.invalid">you must enter a value</mat-error>
+        </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter password</mat-label>
+    <input matInput ngModel name="password" #password="ngModel"  required >
+    <mat-error *ngIf="password.invalid">you must enter a value</mat-error>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    </mat-form-field>
+
+    <button mat-raised-button class="submit-button" type="submit" mat-dialog-close>Submit</button>
+</form>

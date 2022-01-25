@@ -1,0 +1,26 @@
+<div class="mainpage" >
+<mat-drawer-container class="example-container" hasBackdrop="false">
+  <mat-drawer #drawer mode="side" class="content-drawer" >
+    <div class="content-drawer-top" >  <p>ADMIN</p></div>
+    <ul>
+      <li> <a href="" routerLink="admin/users" mat-link-button >Users</a> </li>
+      <li><a href="" routerLink="admin/users" mat-basic-button >Resultat</a></li>
+      <li><a href="" routerLink="admin/users" mat-basic-button >Stats</a></li>
+
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content  >
+    <button mat-raised-button (click)="drawer.toggle()" hasBackdrop="true" mode="over">
+      <mat-icon>view_headline</mat-icon>
+    </button>
+
+    <div class="content-space" >
+    <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+
+</div>

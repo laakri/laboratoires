@@ -1,0 +1,53 @@
+
+mat-card{
+  width: 500px;
+  height: 450px;
+  margin: 10px auto;
+  position: relative;
+}
+mat-form-field{
+  font-size: 15px;
+  margin-top: 30px;
+  width: 90%;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+.submit-button{
+  background-color: var(--maincolor);
+  color: white;
+  font-size: 17px;
+  width: 150px;
+  position: absolute;
+  bottom: 20px ;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+:host ::ng-deep .mat-spinner circle {
+  stroke: var(--maincolor);
+}
+.spintowin{
+  z-index: 1000;
+  position: absolute;
+  height: max-content;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}

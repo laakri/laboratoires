@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+.fas{
+  font-size: 27px;
+}
+ul{
+  list-style-type: none;
+}
+
+mat-spinner{
+  margin: 200px auto;
+  z-index: 1001;
+}
+:root {
+  /*--maincolor: #11374c;
+  --secendcolor:white;*/
+  --maincolor: #164663;
+  --secendcolor:#ffffff;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

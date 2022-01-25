@@ -1,0 +1,39 @@
+.mainpage{
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 50px;
+}
+.example-container{
+  min-height: 700px;
+  background-color: white;
+}
+mat-drawer{
+  width: 190px;
+
+}
+mat-drawer-content button {
+  margin: 25px  ;
+}
+
+.content-space{
+  margin-left: 30px;
+}
+.content-drawer{
+  background-color: #f4f8fa;
+  font-size: 18px;
+}
+.content-drawer-top{
+  background-color: var(--maincolor);
+  width: 100%;
+  height: 90px;
+
+}
+.content-drawer-top p {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  color: white;
+}
+.content-drawer li {
+  margin: 30px auto;
+}
