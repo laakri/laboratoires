@@ -10,7 +10,7 @@
       <span class="example-spacer"></span>
       <div>
         <button mat-raised-button id="button1" ><i class="fas fa-syringe" style="font-size: 19px; margin-right: 8px; "></i>Patient</button>
-        <button mat-flat-button   id="button2" ><i class="fas fa-user-md" style="font-size: 19px; margin-right: 8px; " ></i>Doctor</button>
+        <button mat-flat-button   id="button2"routerLink="/admin/users" ><i class="fas fa-user-md" style="font-size: 19px; margin-right: 8px; " ></i>Doctor</button>
       </div>
 
 </mat-toolbar>
@@ -23,12 +23,13 @@
   <div>
   <a mat-button >Marketplace</a>
 
-  <a mat-button>About us </a>
+  <a mat-button  >About us </a>
   <a mat-button>Contact </a>
 <a   [matMenuTriggerFor]="menu" ><i class="fas fa-user-circle  " ></i></a>
 <mat-menu #menu="matMenu">
-  <a mat-menu-item routerLink="auth" >Profile</a>
-  <a mat-menu-item (click)="onLogout()">Logout</a>
+  <a *ngIf="!userIsAuthenticated" mat-menu-item routerLink="auth" >Login</a>
+  <a *ngIf="userIsAuthenticated" routerLink="Clientpage" mat-menu-item >Profile</a>
+  <a *ngIf="userIsAuthenticated" mat-menu-item (click)="onLogout()">Logout</a>
 </mat-menu>
 </div>
 </mat-toolbar>

@@ -7,9 +7,6 @@ import { UsersService } from 'src/app/auth/signup/user.service';
 import { Subscription } from 'rxjs';
 import {MatTableDataSource} from '@angular/material/table';
 
-import {MatSort, Sort} from '@angular/material/sort';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -50,7 +47,6 @@ export class UsersComponent implements OnInit {
     });
   }
   onDelete(UserId :string){
-    console.log(UserId);
     this.UsersService.deleteUser(UserId);
     this.UsersService.getUsers();
     this.isLoading = true;

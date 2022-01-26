@@ -10,6 +10,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
+import { AuthGuard } from './auth/signup/user.guard';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -23,17 +24,16 @@ const routes: Routes = [
   ]
 },
 {path: 'admin',
-  component: AdminComponent,
+  component: AdminComponent,canActivate: [AuthGuard],
   children:[
    { path: '', redirectTo: '/admin/users', pathMatch: 'full' },
    {path:'users', component: UsersComponent},
    {path:'resultat/:resultatId', component: ResultatComponent },
-   {path:'edit/:editId',component:EditComponent}
+   {path:'edit/:editId',component:EditComponent,}
   ]
 },
-{path:'Resultat-Client',component:OneResultPageComponent},
-
-{path:'Clientpage',component:ClientpageComponent}
+{path:'Resultat-Client',component:OneResultPageComponent,canActivate: [AuthGuard]},
+{path:'Clientpage',component:ClientpageComponent,canActivate: [AuthGuard]}
 
 
 
@@ -42,6 +42,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
+
 })
 export class AppRoutingModule { }

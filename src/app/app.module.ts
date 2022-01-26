@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './auth/signup/user.interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ClientpageComponent } from './clientpage/clientpage.component';
 import { CodePatientPopupComponent } from './code-patient-popup/code-patient-popup.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { UsersComponent } from './admin/users/users.component';
 import { AuthComponent } from './auth/auth.component';
@@ -89,7 +90,9 @@ import {MatSortModule} from '@angular/material/sort';
     A11yModule,
     MatSortModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

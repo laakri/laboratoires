@@ -20,9 +20,7 @@ export class SigninComponent implements OnInit {
     if (form.invalid){
       return;
     }
-/*
     this.UsersService.login(form.value.tel, form.value.password);
-*/
   }
 
 

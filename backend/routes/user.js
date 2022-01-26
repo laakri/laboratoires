@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const checkAuth =require("../middleware/check-user")
 
 router.get('/data', (req,res,next)=> {
 
@@ -74,7 +75,9 @@ router.post("/login", (req, res, next) => {
       );
       res.status(200).json({
         token: token,
-        expiresIn: 3600
+        expiresIn: 3600,
+        userId: fetchedUser._id,
+        userName: fetchedUser.name
       });
     })
     .catch(err => {
@@ -83,7 +86,7 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id",checkAuth, (req, res, next) => {
   User.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "User deleted!" })

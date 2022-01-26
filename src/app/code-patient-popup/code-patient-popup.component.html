@@ -7,13 +7,13 @@
 
     <mat-form-field hintLabel="Max 6 characters" appearance="fill">
       <mat-label>Enter your Phone</mat-label>
-      <input matInput type="text" ngModel name="code" #code="ngModel" pattern="[0-9]+"  maxlength="6" placeholder="Ex. 22666999" required>
+      <input matInput type="text" ngModel name="code" #code="ngModel" pattern="[0-9]+"  maxlength="6" minlength="6" placeholder="Ex. 666999" required>
       <mat-hint align="end">{{code.value?.length || 0}}/6</mat-hint>
       <mat-error *ngIf="code.invalid">you must enter a valid Number</mat-error>
-      </mat-form-field>
+    </mat-form-field>
 
 
-    <button mat-raised-button  [routerLink]="['Resultat-Client', code]" mat-dialog-close> Confirme </button>
+    <button mat-raised-button type="submit"   > Confirme </button>
 
 
 </form>

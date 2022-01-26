@@ -1,3 +1,4 @@
+import { ResultsService } from './../admin/resultat/result.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodePatientPopupComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ResultsService:ResultsService) { }
 
   ngOnInit(): void {
   }
@@ -16,10 +17,10 @@ export class CodePatientPopupComponent implements OnInit {
 
   onclick(form :NgForm){
     if (form.invalid)  {
-    return
+    return;
     }
-    else
-    console.log(form.value.code)
+    console.log(form.value.code);
+    this.ResultsService.getResult(form.value.code);
   }
 
 }
