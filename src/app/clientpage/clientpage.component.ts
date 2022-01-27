@@ -29,8 +29,6 @@ export class ClientpageComponent implements OnInit {
     ngOnInit(): void {
       this.userId= this.UsersService.getUserId();
       this.userName = this.UsersService.getUserName();
-      console.log(this.userId);
-      console.log(this.userName);
       this.ResultsService.getResults(this.userId);
       this.resultSub = this.ResultsService.getResultUpdateListener()
       .subscribe((results:Result[]) => {

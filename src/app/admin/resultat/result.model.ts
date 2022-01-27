@@ -1,5 +1,5 @@
 export interface Result {
-  num:number;
+  num:string;
   object:string;
   filePath:string;
   userId:string;

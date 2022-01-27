@@ -25,7 +25,8 @@
 
   <a mat-button  >About us </a>
   <a mat-button>Contact </a>
-<a   [matMenuTriggerFor]="menu" ><i class="fas fa-user-circle  " ></i></a>
+  <a  *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fa-user-check fa-xs"></i></a>
+  <a  *ngIf="!userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fas fa-user fa-xs" ></i></a>
 <mat-menu #menu="matMenu">
   <a *ngIf="!userIsAuthenticated" mat-menu-item routerLink="auth" >Login</a>
   <a *ngIf="userIsAuthenticated" routerLink="Clientpage" mat-menu-item >Profile</a>

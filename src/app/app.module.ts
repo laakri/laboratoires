@@ -1,4 +1,5 @@
 import { AuthInterceptor } from './auth/signup/user.interceptor';
+import {ErrorInterceptor}from'./error-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,6 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
-
 
 /* *******************MODELS******************** */
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -41,6 +41,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { AdduserComponent } from './admin/adduser/adduser.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {MatSortModule} from '@angular/material/sort';
+import { ErrorComponent } from './error/error.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ContactusComponent } from './contactus/contactus.component';
 
 
 /* ********************************************* */
@@ -62,6 +65,8 @@ import {MatSortModule} from '@angular/material/sort';
     ResultatComponent,
     EditComponent,
     OneResultPageComponent,
+    ErrorComponent,
+    ContactusComponent,
 
   ],
   imports: [
@@ -88,11 +93,15 @@ import {MatSortModule} from '@angular/material/sort';
     MatDividerModule,
     MatSidenavModule,
     A11yModule,
-    MatSortModule
+    MatSortModule,
+    MatSnackBarModule
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},
+
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ErrorComponent]
 })
 export class AppModule { }

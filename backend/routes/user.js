@@ -10,13 +10,14 @@ router.get('/data', (req,res,next)=> {
   User.find().select(['-password','-__v'])
   .then(documents => {
     res.status(200).json({
-      message : 'post runs seccesfully !',
+      message : 'Users Fetched!',
       users :documents
     });
   })
   .catch(err => {
     console.log(err)
     res.status(500).json({
+      message : 'Can"t fetch Users!',
       error: err
     });
   });
@@ -42,7 +43,8 @@ router.post("/signup", (req, res, next) =>{
     .catch(err => {
       console.log(err)
       res.status(500).json({
-        error: err
+        error: err,
+        message:"This phone number already exited !",
       });
     });
 
@@ -56,7 +58,7 @@ router.post("/login", (req, res, next) => {
     .then(user => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Incorrect phone number !"
         });
       }
       fetchedUser = user;
@@ -65,7 +67,7 @@ router.post("/login", (req, res, next) => {
     .then(result => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed"
+          message: "Incorrect password !"
         });
       }
       const token = jwt.sign(
@@ -82,19 +84,19 @@ router.post("/login", (req, res, next) => {
     })
     .catch(err => {
       return res.status(401).json({
-        message: "Auth failed"
+        message: "Authentication failed !"
       });
     });
 });
 router.delete("/:id",checkAuth, (req, res, next) => {
   User.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
-    res.status(200).json({ message: "User deleted!" })
+    res.status(200).json({ message: "User deleted !" })
   })
   .catch(err => {
     console.log(err);
     return res.status(500).json({
-      message: ""
+      message: "Problem In deleting Users !"
     });
   });
 });

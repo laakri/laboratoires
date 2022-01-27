@@ -63,8 +63,7 @@ img{
 }
 span{
   font-size: 25px;
-  color: black;
-  letter-spacing: -1px;
+  color: rgb(48, 48, 48);
   font-weight: bold;
 }
 
@@ -75,7 +74,10 @@ a{
   align-items: center;
 }
 
-.fa-user-circle:hover{
+.fas{
+  font-size: 22px;
+}
+.fas:hover{
   transform: scale(1.1);
 }
 

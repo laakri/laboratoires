@@ -42,11 +42,3 @@ input.example-right-align {
 :host ::ng-deep .mat-spinner circle {
   stroke: var(--maincolor);
 }
-.spintowin{
-  z-index: 1000;
-  position: absolute;
-  height: max-content;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}

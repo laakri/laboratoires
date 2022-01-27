@@ -44,12 +44,12 @@ export class UsersService {
   addUser(  name : string ,tel :string,  password :string){
     const user :User= {name :name ,tel :tel,  password :password};
     this.http.post<{message :string }>('http://localhost:4401/api/users/signup', user)
-    .subscribe((responseData) => {
-      console.log(responseData.message);
-      this.users.push(user);
-      this.userUpdated.next([...this.users]);
+    .subscribe(() => {
       this.router.navigate(["/auth/signin"]);
-    });
+    },error=>{
+       console.log(error);
+    }
+    );
   }
 
 

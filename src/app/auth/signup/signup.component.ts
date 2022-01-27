@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    console.log(form.value.nom, form.value.tel  , form.value.password);
+    this.isLoading = true;
     this.UsersService.addUser(form.value.nom, form.value.tel  , form.value.password);
   }
 

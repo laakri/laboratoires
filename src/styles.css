@@ -21,10 +21,7 @@ ul{
   list-style-type: none;
 }
 
-mat-spinner{
-  margin: 200px auto;
-  z-index: 1001;
-}
+
 :root {
   /*--maincolor: #11374c;
   --secendcolor:white;*/
@@ -34,3 +31,8 @@ mat-spinner{
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.blue-snackbar {
+  background: #da220a;
+  color: #ffffff;
+}

@@ -1,8 +1,7 @@
-
-<div class="spintowin"   ><mat-spinner *ngIf="isLoading"  ></mat-spinner></div>
-
-<mat-card  >
-
+<div class="div-div-mat-spinner" *ngIf="isLoading">
+<div class="div-mat-spinner" *ngIf="isLoading"><mat-spinner></mat-spinner></div>
+</div>
+<mat-card *ngIf="!isLoading" >
 <form (submit)="onLogin(loginForm)" #loginForm="ngForm" >
   <h1>Login</h1>
     <mat-form-field  appearance="fill">

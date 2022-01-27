@@ -1,7 +1,7 @@
 
 mat-card{
   width: 500px;
-  height: 450px;
+  height: 420px;
   margin: 10px auto;
   position: relative;
 }
@@ -50,4 +50,25 @@ input.example-right-align {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
+}
+input[type="file"]{
+  visibility: hidden;
+}
+
+.butsdtsgdton{
+  margin-top: 20px;
+}
+.filepreview{
+  margin-top: 40px;
+  max-width: 90%;
+  width: max-content;
+  height: 25px;
+  background-color: rgb(233, 233, 233);
+  font-size: 15px;
+  padding: 0 5px;
+  border-radius: 5px;
+  line-height: 25px;
+}
+.filepreview p {
+  max-width: 100%;
 }

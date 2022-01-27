@@ -38,15 +38,29 @@ input.example-right-align {
   margin-right: auto;
 
 }
-
-:host ::ng-deep .mat-spinner circle {
-  stroke: var(--maincolor);
-}
-.spintowin{
-  z-index: 1000;
+/********************************/
+mat-spinner{
   position: absolute;
-  height: max-content;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 101;
 }
+.div-div-mat-spinner{
+  z-index: 4;
+height: 550px;
+position: relative;
+}
+.div-mat-spinner{
+  z-index: 5;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+:host ::ng-deep .mat-spinner circle {
+  stroke: var(--secendcolor);
+}
+/********************************/

@@ -1,8 +1,9 @@
 import { ResultsService } from './result.service';
-import { NgForm } from '@angular/forms';
+import { FormControl,NgForm,FormGroup,Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Subscription } from 'rxjs';
+import { last } from 'rxjs/operators';
 
 
 @Component({
@@ -12,27 +13,58 @@ import { Subscription } from 'rxjs';
 })
 export class ResultatComponent implements OnInit {
 
+  form!: FormGroup;
   private resultatId: any;
   private routeSub: Subscription | undefined;
-
+  filePreview!: string;
+  fileName!:string;
   constructor( public ResultsService:ResultsService,public route: ActivatedRoute ) { }
   gen() {
-    return Math.floor(Math.random() * (999999 - 100000) + 100000);
+
+      let last = Math.floor(Math.random() * (999999 - 100000) + 100000);
+      return last.toString();
+
   }
 
   ngOnInit(): void {
+
+    this.form = new FormGroup({
+      object: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(4)]
+      }),
+      filePath: new FormControl(null,{
+        validators: [Validators.required],
+      })
+    });
+
     this.routeSub = this.route.params.subscribe(params => {
       this.resultatId = params['resultatId'];
+
     });
 
   }
-
-  onAddresult(form : NgForm,){
-    if (form.invalid){
+  onFilePicked(event: Event) {
+    const file =((event.target as HTMLInputElement ).files as FileList)[0];
+    this.form.patchValue({ filePath: file });
+    ( (this.form.get('filePath') as any ).updateValueAndValidity());
+    const reader = new FileReader();
+    reader.onload =() => {
+      this.filePreview = (reader.result as string );
+    };
+    reader.readAsDataURL(file);
+    this.fileName = file.name;
+  }
+  onSavePost(){
+    if (this.form.invalid){
       return
     }
-    this.ResultsService.addresults(this.gen(),form.value.object,form.value.filePath,this.resultatId);
+
+    this.ResultsService.addresults(
+      this.gen(),
+      this.form.value.object,
+      this.form.value.filePath,
+      this.resultatId
+      );
 
   }
-
 }

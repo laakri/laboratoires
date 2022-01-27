@@ -14,14 +14,26 @@ export class ResultsService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  addresults(num:number , object:string,filePath:string,userId:string){
-    const result :Result=
-    {num :num ,object :object,filePath:filePath,userId:userId};
-    this.http.post<{message :string }>('http://localhost:4401/api/resultats/resultat', result)
+  addresults(num:string , object:string,filePath:File,userId:string){
+    const resultData =new FormData();
+    resultData.append("num",num);
+    resultData.append("object",object);
+    resultData.append("file",filePath,num );
+    resultData.append("userId",userId);
+
+    this.http.post<{message :string;result:Result }>('http://localhost:4401/api/resultats', resultData)
     .subscribe((responseData) => {
-      console.log(responseData.message);
+      const result: Result = {
+        num: num,
+        object: object,
+        filePath: responseData.result.filePath,
+        userId: userId,
+      };
       this.results.push(result);
       this.resultUpdated.next([...this.results]);
+      console.log("Result added successfully")
+      this.router.navigate(["/admin/users"]);
+
     });
   }
   getResults(UserId: string){
