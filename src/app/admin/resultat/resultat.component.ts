@@ -1,9 +1,8 @@
 import { ResultsService } from './result.service';
-import { FormControl,NgForm,FormGroup,Validators } from '@angular/forms';
+import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, } from "@angular/router";
 import { Subscription } from 'rxjs';
-import { last } from 'rxjs/operators';
 
 
 @Component({

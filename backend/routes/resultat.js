@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
     cb(null, name + "-" + Date.now() + "." + ext);
   }
 });
-router.post('',multer({ storage: storage }).single("file"),
+router.post('',checkAuth,multer({ storage: storage }).single("file"),
  (req,res,next)=> {
   const url = req.protocol + "://" + req.get("host");
     const resultat = new Resultat({
@@ -68,18 +68,19 @@ router.get('/data/:id',checkAuth, (req,res,next)=> {
   });
 });
 
-router.get('/datas/:code', (req,res,next)=> {
+router.get('/:code', (req,res,next)=> {
 
   Resultat.findOne({num: req.params.code})
+  .select(['-_id','-userId','-updatedAt','-__v'])
   .then(documents => {
     res.status(200).json({
-      message : 'Results fetched seccesfully !',
-      results :documents
+      result :documents
     });
   })
   .catch(err => {
     console.log(err)
     res.status(500).json({
+      message : 'Results fetched seccesfully !',
       message : 'Couldn"t fetch result !',
       error: err
     });

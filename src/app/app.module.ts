@@ -19,6 +19,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { ErrorComponent } from './error/error.component';
 
 /* *******************MODELS******************** */
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -41,9 +43,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { AdduserComponent } from './admin/adduser/adduser.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {MatSortModule} from '@angular/material/sort';
-import { ErrorComponent } from './error/error.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ContactusComponent } from './contactus/contactus.component';
+import {MatListModule} from '@angular/material/list';
 
 
 /* ********************************************* */
@@ -94,7 +95,8 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatSidenavModule,
     A11yModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},

@@ -11,6 +11,7 @@ import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
 import { AuthGuard } from './auth/signup/user.guard';
+import { ContactusComponent } from './contactus/contactus.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -32,8 +33,9 @@ const routes: Routes = [
    {path:'edit/:editId',component:EditComponent,}
   ]
 },
-{path:'Resultat-Client',component:OneResultPageComponent,canActivate: [AuthGuard]},
-{path:'Clientpage',component:ClientpageComponent,canActivate: [AuthGuard]}
+{path:'resultat-client',component:OneResultPageComponent,},
+{path:'clientpage',component:ClientpageComponent,canActivate: [AuthGuard]},
+{path:'contact',component:ContactusComponent,}
 
 
 

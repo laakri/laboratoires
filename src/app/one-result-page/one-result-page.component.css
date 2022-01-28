@@ -18,12 +18,28 @@ mat-card{
 	position: relative;
 	text-align: left;
 	overflow: hidden;
-	padding: 30px;
+	padding: 20px 50px 40px 20px;
 	height: 100%;
 	float: left;
 	width: 40%;
 
 }
+.product-details p{
+  font-size: 22px;
+}
+
+.resultinfo{
+  margin-bottom:10px;
+  max-width: 90%;
+  width: 80%;
+  height: 60px;
+  background-color: rgb(233, 233, 233);
+  font-size: 15px;
+  padding: 15px;
+  border-radius: 2px;
+  }
+
+
 
 #container .product-details h1{
 	font-family: 'Bebas Neue', cursive;
@@ -73,10 +89,7 @@ mat-card{
 	left: 22.8%;
 
 }
-.information{
-  margin-top: 20px;
-  text-align: center;
-}
+
 
 
 .image {

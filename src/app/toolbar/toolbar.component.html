@@ -24,7 +24,7 @@
   <a mat-button >Marketplace</a>
 
   <a mat-button  >About us </a>
-  <a mat-button>Contact </a>
+  <a mat-button routerLink="/contact" >Contact </a>
   <a  *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fa-user-check fa-xs"></i></a>
   <a  *ngIf="!userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fas fa-user fa-xs" ></i></a>
 <mat-menu #menu="matMenu">

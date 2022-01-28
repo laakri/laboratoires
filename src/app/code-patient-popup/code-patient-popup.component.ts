@@ -1,18 +1,19 @@
 import { ResultsService } from './../admin/resultat/result.service';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-code-patient-popup',
   templateUrl: './code-patient-popup.component.html',
   styleUrls: ['./code-patient-popup.component.css']
 })
-export class CodePatientPopupComponent implements OnInit {
+export class CodePatientPopupComponent implements OnInit{
 
   constructor(public ResultsService:ResultsService) { }
 
   ngOnInit(): void {
   }
+
 
 
   onclick(form :NgForm){

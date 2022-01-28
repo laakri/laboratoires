@@ -58,22 +58,20 @@ export class ResultsService {
     return this.resultUpdated.asObservable();
   }
   getResult(code: string){
-    this.http.get<{message :string, results :any}>('http://localhost:4401/api/resultats/datas/'+code)
-    .pipe(map((resultData) =>{
-      return resultData.results.map((result: { num: any; object: any; filePath:any}) => {
-        return{
-        num: result.num,
-        object: result.object,
-        filePath:result.filePath
-        };
-      });
-    }))
-    .subscribe(transformedResult => {
-      this.results = transformedResult;
-      this.resultUpdated.next([...this.results]);
-      this.router.navigate(["/"]);
-
-    });
+    this.http.get<{message :string, result :any}>('http://localhost:4401/api/resultats/'+code)
+    .subscribe((results ) => {
+      const jhon = {
+        num: results.result.num,
+        object: results.result.object,
+        filePath: results.result.filePath,
+        createdAt: results.result.createdAt,
+      };
+      if (jhon !==null)
+      this.router.navigate(["/resultat-client", jhon]);
+    },error =>{
+      console.log(error);
+    }
+    );
   }
 
 }
