@@ -29,7 +29,7 @@ router.post('',checkAuth,multer({ storage: storage }).single("file"),
     const resultat = new Resultat({
       num: req.body.num,
       object: req.body.object,
-      filePath: url + "/file-folder/" + req.body.filename,
+      filePath: url + "/file-folder/" + req.file.filename,
       userId:req.body.userId,
     });
     resultat.save()

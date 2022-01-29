@@ -1,0 +1,22 @@
+.mainpage{
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 50px;
+  min-height: 460px;
+}
+
+
+
+
+/****** table ******/
+table{
+  margin: 30px auto;
+  width: 100% ;
+  cursor: default;
+
+}
+
+table:nth-child(3){
+  width: 100px;
+  color: blue;
+}

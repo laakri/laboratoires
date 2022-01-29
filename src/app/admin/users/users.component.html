@@ -1,7 +1,9 @@
 <div class="main-content" >
 
-  <button mat-raised-button	(click)="add_user()" >ADD USER</button>
+  <button mat-raised-button	(click)="add_user()" style="margin-right: 30px;" >ADD USER</button>
+  <button mat-raised-button	(click)="add_admin()" >ADD ADMIN</button>
 <div class="mat-elevation-z8">
+
   <table mat-table [dataSource]="users" >
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <!-- tel Column -->
@@ -20,17 +22,28 @@
     <ng-container matColumnDef="add_result">
       <th mat-header-cell *matHeaderCellDef> Ajouter Resultat </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button mat-stroked-button	[routerLink]="['/admin/resultat', element.id]" color="basic" >Add</button>
+        <button mat-button mat-stroked-button	[routerLink]="['/admin/resultat', element.id]" color="basic" >Add result</button>
       </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="Edit">
+    <ng-container matColumnDef="Results">
+      <th mat-header-cell *matHeaderCellDef> Results </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button mat-stroked-button	[routerLink]="['/admin/resultats', element.id]" color="basic" >Results</button>
+      </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Edit" >
       <th mat-header-cell *matHeaderCellDef> Edit </th>
       <td mat-cell *matCellDef="let element">
         <button mat-button mat-stroked-button	[routerLink]="['/admin/edit', element.id]" color="primary" >Edit</button>
       </td>
     </ng-container>
+
+
+
 
     <ng-container matColumnDef="Delete">
       <th mat-header-cell *matHeaderCellDef> Delete </th>
@@ -41,7 +54,6 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
 
 
   </table>

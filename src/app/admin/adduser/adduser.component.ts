@@ -1,6 +1,6 @@
 import { UsersService } from './../../auth/signup/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import {  NgForm  } from '@angular/forms';
 
 
 @Component({
@@ -21,7 +21,6 @@ export class AdduserComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    console.log(form.value.nom, form.value.tel  , form.value.password);
     this.UsersService.addUser(form.value.nom, form.value.tel  , form.value.password);
   }
 }

@@ -23,14 +23,7 @@ export class ResultsService {
 
     this.http.post<{message :string;result:Result }>('http://localhost:4401/api/resultats', resultData)
     .subscribe((responseData) => {
-      const result: Result = {
-        num: num,
-        object: object,
-        filePath: responseData.result.filePath,
-        userId: userId,
-      };
-      this.results.push(result);
-      this.resultUpdated.next([...this.results]);
+      console.log(filePath+","+num)
       console.log("Result added successfully")
       this.router.navigate(["/admin/users"]);
 
@@ -39,11 +32,12 @@ export class ResultsService {
   getResults(UserId: string){
     this.http.get<{message :string, results :any}>('http://localhost:4401/api/resultats/data/'+UserId)
     .pipe(map((resultData) =>{
-      return resultData.results.map((result: {_id: any; num: any; object: any; createdAt: any; updatedAt: any; }) => {
+      return resultData.results.map((result: {_id: any; num: any; object: any;filePath:any; createdAt: any; updatedAt: any; }) => {
         return{
         id: result._id,
         num: result.num,
         object: result.object,
+        filePath : result.filePath,
         createdAt : result.createdAt,
         updatedAt : result.updatedAt
         };

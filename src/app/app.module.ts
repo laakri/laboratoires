@@ -21,6 +21,9 @@ import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { ErrorComponent } from './error/error.component';
+import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AddadminComponent } from './admin/addadmin/addadmin.component';
 
 /* *******************MODELS******************** */
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -45,6 +48,7 @@ import {A11yModule} from '@angular/cdk/a11y';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 /* ********************************************* */
@@ -68,6 +72,9 @@ import {MatListModule} from '@angular/material/list';
     OneResultPageComponent,
     ErrorComponent,
     ContactusComponent,
+    ResultatsUserComponent,
+    AdminLoginComponent,
+    AddadminComponent,
 
   ],
   imports: [
@@ -96,7 +103,8 @@ import {MatListModule} from '@angular/material/list';
     A11yModule,
     MatSortModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    MatAutocompleteModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},

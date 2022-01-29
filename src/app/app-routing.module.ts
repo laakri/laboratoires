@@ -12,6 +12,8 @@ import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
 import { AuthGuard } from './auth/signup/user.guard';
 import { ContactusComponent } from './contactus/contactus.component';
+import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -29,14 +31,15 @@ const routes: Routes = [
   children:[
    { path: '', redirectTo: '/admin/users', pathMatch: 'full' },
    {path:'users', component: UsersComponent},
-   {path:'resultat/:resultatId', component: ResultatComponent },
-   {path:'edit/:editId',component:EditComponent,}
+   {path:'resultat/:userId', component: ResultatComponent },
+   {path:'edit/:editId',component:EditComponent,},
+   {path:'resultats/:userId',component:ResultatsUserComponent,}
   ]
 },
 {path:'resultat-client',component:OneResultPageComponent,},
 {path:'clientpage',component:ClientpageComponent,canActivate: [AuthGuard]},
-{path:'contact',component:ContactusComponent,}
-
+{path:'contact',component:ContactusComponent,},
+{path:'login-admin',component:AdminLoginComponent,}
 
 
 

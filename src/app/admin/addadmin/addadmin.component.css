@@ -1,0 +1,25 @@
+
+mat-form-field{
+  margin: auto;
+  width: 70%;
+
+}
+.submit-button{
+width: 50%;
+margin: auto;
+color: var(--secendcolor);
+background-color: var(--maincolor);
+}
+
+form {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.icon{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+}

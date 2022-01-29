@@ -4,15 +4,15 @@
 
       <mat-form-field appearance="fill">
       <mat-label>Enter the object</mat-label>
-      <input matInput type="text" formControlName="object" >
-      <mat-error *ngIf="!form.get('title')" >you must enter a value</mat-error>
+      <input matInput type="text" formControlName="object" [formControl]="myControl"[matAutocomplete]="auto" >
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="!form.get('object')" >you must enter a value</mat-error>
       </mat-form-field>
-<!--
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your File Path</mat-label>
-        <input matInput type="text" formControlName="filePath" >
-        </mat-form-field>
--->
+
       <div class="butsdtsgdton" >
         <button type="button" mat-raised-button
         (click)="filepicker.click()" >Pick File</button>

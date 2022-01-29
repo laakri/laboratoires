@@ -1,3 +1,4 @@
+import { AddadminComponent } from './../addadmin/addadmin.component';
 import { User } from './../../auth/signup/user.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { Component, OnInit, ViewChild} from '@angular/core';
@@ -13,23 +14,18 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users : User[]=[];
-  displayedColumns: string[] = ['tel', 'name', 'add_result', 'Edit', 'Delete'];
-  dataSource = new MatTableDataSource<User>(this.users);
+  users: User[]=[];
+  displayedColumns: string[] = ['tel', 'name', 'add_result','Results', 'Edit', 'Delete'];
   isLoading = false;
-
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   usersSub: Subscription = new Subscription;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
 
-  }
+
   constructor(public dialog: MatDialog,public UsersService:UsersService) {
   }
-
 
   ngOnInit(): void {
    this.UsersService.getUsers();
@@ -39,9 +35,17 @@ export class UsersComponent implements OnInit {
       this.isLoading = false;
       this.users =users;
     });
+
   }
+
   add_user() {
     this.dialog.open(AdduserComponent,{
+      width: '400px',
+      height:'550px'
+    });
+  }
+  add_admin() {
+    this.dialog.open(AddadminComponent,{
       width: '400px',
       height:'550px'
     });
@@ -62,8 +66,6 @@ export class UsersComponent implements OnInit {
 
 
 }
-
-
 
 
 
