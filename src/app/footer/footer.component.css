@@ -1,6 +1,6 @@
 footer{
   width: 100%;
-  height: 300px;
+  height: 250px;
   background-color: var(--maincolor);
   position: relative;
 }
@@ -29,7 +29,7 @@ li{
 }
 .footer-content-card div{
   margin-bottom: 20px ;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .social-media{
   margin: 10px;

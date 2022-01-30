@@ -31,7 +31,7 @@ router.post("/signup", (req, res, next) =>{
   });
 
 });
-/*
+
 router.post("/login", (req, res, next) => {
   let fetchedAdmin;
   Admin.findOne({ tel: req.body.tel })
@@ -42,7 +42,7 @@ router.post("/login", (req, res, next) => {
         });
       }
       fetchedAdmin = admin;
-      return bcrypt.compare(req.body.password, user.password);
+      return bcrypt.compare(req.body.password, admin.password);
     })
     .then(result => {
       if (!result) {
@@ -51,15 +51,15 @@ router.post("/login", (req, res, next) => {
         });
       }
       const token = jwt.sign(
-        { tel: fetchedUser.tel, userId: fetchedUser._id },
+        { tel: fetchedAdmin.tel, adminId: fetchedAdmin._id },
         "secret_this_should_be_longer_fdskl",
         { expiresIn: "1h" }
       );
       res.status(200).json({
         token: token,
         expiresIn: 28800,
-        userId: fetchedUser._id,
-        userName: fetchedUser.name
+        adminId: fetchedAdmin._id,
+        adminName: fetchedAdmin.name
       });
     })
     .catch(err => {
@@ -68,7 +68,7 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
-*/
+
 
 
 

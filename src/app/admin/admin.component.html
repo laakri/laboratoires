@@ -4,9 +4,9 @@
   <div>
     <mat-card class="toolbar" > <div>
       <div class="toolbar-div" >
-        <a mat-button >Users</a>
-        <a mat-button >About us </a>
-        <a mat-button >logout </a>
+        <a mat-button routerLink="/admin/users" routerLinkActive="mat-primary">Users</a>
+        <a mat-button >Admins </a>
+        <a mat-button (click)="onlogout()" >logout </a>
 
       </div>
     </div> </mat-card>

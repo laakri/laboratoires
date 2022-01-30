@@ -1,3 +1,5 @@
+import { logging } from 'protractor';
+import { AdminsService } from './../admin-login/admin.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public AdminsService:AdminsService) { }
 
   ngOnInit(): void {
   }
-
+  onlogout(){
+    this.AdminsService.logout()
+  }
 
 
 

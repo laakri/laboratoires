@@ -4,24 +4,10 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const checkAuth =require("../middleware/check-user")
+const checkAuthAdmin =require("../middleware/check-admin")
 
-router.get('/data', (req,res,next)=> {
 
-  User.find().select(['-password','-__v'])
-  .then(documents => {
-    res.status(200).json({
-      message : 'Users Fetched!',
-      users :documents
-    });
-  })
-  .catch(err => {
-    console.log(err)
-    res.status(500).json({
-      message : 'Can"t fetch Users!',
-      error: err
-    });
-  });
-});
+
 
 
 
@@ -88,7 +74,24 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
-router.delete("/:id",checkAuth, (req, res, next) => {
+router.get('/data',checkAuthAdmin, (req,res,next)=> {
+
+  User.find().select(['-password','-__v'])
+  .then(documents => {
+    res.status(200).json({
+      message : 'Users Fetched!',
+      users :documents
+    });
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({
+      message : 'Can"t fetch Users!',
+      error: err
+    });
+  });
+});
+router.delete("/:id",checkAuthAdmin, (req, res, next) => {
   User.deleteOne({ _id: req.params.id }).then(result => {
     console.log(result);
     res.status(200).json({ message: "User deleted !" })
@@ -100,6 +103,8 @@ router.delete("/:id",checkAuth, (req, res, next) => {
     });
   });
 });
+
+
 
 module.exports = router;
 

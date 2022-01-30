@@ -4,7 +4,8 @@ import {Subject}from 'rxjs'
 import {HttpClient} from '@angular/common/http';
 import { Router } from "@angular/router";
 import {map} from 'rxjs/operators';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SuccesComponent } from "src/app/succes/succes.component";
 
 
 @Injectable({providedIn: 'root'})
@@ -17,7 +18,7 @@ export class UsersService {
   private users :User[] = [];
   private authStatusListener = new Subject<boolean>();
   private userUpdated = new Subject<User[]>();
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private _snackBar: MatSnackBar) {
   }
 
 
@@ -45,13 +46,27 @@ export class UsersService {
     const user :User= {name :name ,tel :tel,  password :password};
     this.http.post<{message :string }>('http://localhost:4401/api/users/signup', user)
     .subscribe(() => {
-      this.router.navigate(["/auth/signin"]);
+      this.login(tel,password)
     },error=>{
        console.log(error);
     }
     );
   }
-
+  addUserAdmin(  name : string ,tel :string,  password :string){
+    const user :User= {name :name ,tel :tel,  password :password};
+    this.http.post<{message :string }>('http://localhost:4401/api/users/signup', user)
+    .subscribe(() => {
+      const  successMessage ="Success !";
+      this._snackBar.openFromComponent( SuccesComponent,
+        {data :{message :successMessage},
+        duration: 2500,
+        panelClass: ['green-snackbar']
+      });
+    },error=>{
+       console.log(error);
+    }
+    );
+  }
 
 
 
@@ -95,6 +110,7 @@ export class UsersService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate,this.userId,this.userName);
+
           this.router.navigate(["/clientpage"]);
         }
       });
@@ -158,7 +174,7 @@ export class UsersService {
     const expirationDate = localStorage.getItem("expiration");
     const userId = localStorage.getItem("userId");
     const userName = localStorage.getItem("userName");
-    if (!token || !expirationDate) {
+    if (!token || !expirationDate || userId==null) {
       return;
     }
     return {
@@ -172,6 +188,12 @@ export class UsersService {
   deleteUser(UserId: string) {
     this.http.delete('http://localhost:4401/api/users/'+UserId)
     .subscribe((responseData) => {
+      const  successMessage ="Success !";
+      this._snackBar.openFromComponent( SuccesComponent,
+        {data :{message :successMessage},
+        duration: 2500,
+        panelClass: ['green-snackbar']
+      });
     });
   }
 

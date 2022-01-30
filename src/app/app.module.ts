@@ -1,4 +1,5 @@
 import { AuthInterceptor } from './auth/signup/user.interceptor';
+import {AuthInterceptorAdmin} from './admin-login/admin.interceptor'
 import {ErrorInterceptor}from'./error-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -49,6 +50,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SuccesComponent } from './succes/succes.component';
 
 
 /* ********************************************* */
@@ -75,6 +77,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ResultatsUserComponent,
     AdminLoginComponent,
     AddadminComponent,
+    SuccesComponent,
 
   ],
   imports: [
@@ -108,6 +111,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorAdmin,multi:true},
     {provide:HTTP_INTERCEPTORS,useClass:ErrorInterceptor,multi:true},
 
   ],

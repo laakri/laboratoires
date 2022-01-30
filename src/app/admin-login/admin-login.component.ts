@@ -14,12 +14,11 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  onSignup(form : NgForm ){
+  onLogin(form : NgForm){
     if (form.invalid){
       return;
     }
-    this.isLoading = true;
-    this.AdminsService.addAdmin(form.value.nom, form.value.tel  , form.value.password);
+    this.AdminsService.login(form.value.tel, form.value.password);
   }
 
 }

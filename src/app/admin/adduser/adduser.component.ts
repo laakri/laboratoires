@@ -21,6 +21,6 @@ export class AdduserComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.UsersService.addUser(form.value.nom, form.value.tel  , form.value.password);
+    this.UsersService.addUserAdmin(form.value.nom, form.value.tel  , form.value.password);
   }
 }

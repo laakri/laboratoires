@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -11,6 +11,7 @@ import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
 import { AuthGuard } from './auth/signup/user.guard';
+import {AuthGuardAdmin}from './admin-login/admin.guard'
 import { ContactusComponent } from './contactus/contactus.component';
 import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
   ]
 },
 {path: 'admin',
-  component: AdminComponent,canActivate: [AuthGuard],
+  component: AdminComponent,canActivate: [AuthGuardAdmin] ,
   children:[
    { path: '', redirectTo: '/admin/users', pathMatch: 'full' },
    {path:'users', component: UsersComponent},
@@ -48,7 +49,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard,AuthGuardAdmin]
 
 })
 export class AppRoutingModule { }

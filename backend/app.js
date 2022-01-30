@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const resultatRoutes = require("./routes/resultat");
 const adminRoutes = require("./routes/admin");
+const emailRoutes = require("./routes/email");
 
 
 
@@ -48,6 +49,7 @@ mongoose.connect(
 app.use("/api/resultats",resultatRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/admins", adminRoutes);
+app.use("/api/email", emailRoutes);
 
 
 module.exports = app;

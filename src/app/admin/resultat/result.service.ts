@@ -4,14 +4,15 @@ import {Subject}from 'rxjs'
 import {HttpClient} from '@angular/common/http';
 import { Router } from "@angular/router";
 import {map} from 'rxjs/operators';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { SuccesComponent } from "src/app/succes/succes.component";
 
 @Injectable({providedIn: 'root'})
 export class ResultsService {
   private results :Result[] = [];
   private resultUpdated = new Subject<Result[]>();
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private _snackBar: MatSnackBar) {
   }
 
   addresults(num:string , object:string,filePath:File,userId:string){
@@ -26,7 +27,12 @@ export class ResultsService {
       console.log(filePath+","+num)
       console.log("Result added successfully")
       this.router.navigate(["/admin/users"]);
-
+      const  successMessage ="Result Added Successfuly !";
+      this._snackBar.openFromComponent( SuccesComponent,
+        {data :{message :successMessage},
+        duration: 2500,
+        panelClass: ['green-snackbar']
+      });
     });
   }
   getResults(UserId: string){

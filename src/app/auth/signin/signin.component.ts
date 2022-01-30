@@ -1,6 +1,6 @@
 import { UsersService } from './../signup/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',

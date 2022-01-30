@@ -46,7 +46,7 @@
     <ng-container matColumnDef="tele">
       <th mat-header-cell *matHeaderCellDef> Téléchargement </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button mat-stroked-button	 color="primary" >Télécharger PDF</button>
+        <a mat-button mat-stroked-button	download href="{{element.filePath}}" color="primary" target="_blank" >Télécharger PDF</a>
       </td>
     </ng-container>
 

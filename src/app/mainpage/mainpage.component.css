@@ -1,27 +1,8 @@
 
-.background-image-blur{
-  /*background-image: url(../../assets/dna-163710.jpg);*/
-  object-fit: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 550px;
-  width: 100%;
-  position: absolute;
-  filter: blur(30px);
-  -webkit-filter: blur(30px);
-  z-index: -1;
-  /*filter: brightness(1.2);*/
-}
-
-
-
 .mainpage{
   max-width: 1200px;
   margin: auto;
 }
-
-
-
 
 .first-content-flexebility{
   display: flex;
@@ -232,24 +213,7 @@ button:hover{
   margin: 30px auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**************** Screen *********************/
 
 @media only screen and (max-width: 1150px) {
   .secend-content-card {

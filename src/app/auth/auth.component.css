@@ -6,8 +6,8 @@
   height: 550px;
   width: 100%;
   position: absolute;
-  filter: blur(30px);
-  -webkit-filter: blur(30px);
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
   z-index: -1;
   /*filter: brightness(1.2);*/
 }

@@ -7,7 +7,6 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 })
 export class ErrorComponent implements OnInit {
 
-  durationInSeconds = 2;
 
 
   constructor(@Inject(MAT_SNACK_BAR_DATA) public data: {message: string}) {}

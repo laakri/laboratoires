@@ -1,9 +1,8 @@
-
-<div class="main-mainpage">
+<div class="background-image-blur" >
 </div>
-
 <div class="mainpage" >
 <div class="first-content">
+
 <h1>Contac Us</h1>
 <h3>ismi saif idiinee je ma sarkouzi de la freeere la minouch bel je ma sarkouzi de la freeere fakos de merde de puta de ramos</h3>
 </div>
@@ -11,7 +10,7 @@
   <div class="secend-content-first" >
 
   <div class="mat-list">
-    <div class="secend-content-info">
+    <mat-card class="secend-content-info">
         <div class="icon-div" ><mat-icon>map</mat-icon></div>
         <div class="text-div" >
             <p>Address</p>
@@ -19,8 +18,8 @@
               bahdha bousta teli
             </span>
         </div>
-    </div>
-    <div class="secend-content-info">
+    </mat-card>
+    <mat-card class="secend-content-info">
       <div class="icon-div" ><mat-icon>phone</mat-icon></div>
       <div class="text-div" >
           <p>Phone</p>
@@ -28,8 +27,8 @@
             216-24-989-104
           </span>
       </div>
-  </div>
-  <div class="secend-content-info">
+    </mat-card>
+  <mat-card class="secend-content-info">
     <div class="icon-div" ><mat-icon>email</mat-icon></div>
     <div class="text-div" >
         <p>Email</p>
@@ -37,13 +36,36 @@
           Glassisaif@gmail.com
         </span>
     </div>
-</div>
+</mat-card>
   </div>
 
   </div>
   <div class="secend-content-secend" >
-    <mat-card>
+    <mat-card >
+      <form (submit)="onSignup(signupForm);signupForm.resetForm()" #signupForm="ngForm"  >
+        <h1>Send Message</h1>
 
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your name</mat-label>
+            <input matInput type="text" ngModel name="nom" #nom="ngModel"  required >
+            <mat-error *ngIf="nom.invalid">you must enter a value</mat-error>
+            </mat-form-field>
+
+
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" ngModel name="email" #email="ngModel" required>
+                <mat-error *ngIf="email.invalid">you must enter a value</mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Message</mat-label>
+                <textarea matInput ngModel name="textA" #textA="ngModel" required ></textarea>
+                <mat-error *ngIf="textA.invalid">you must enter a value</mat-error>
+              </mat-form-field>
+
+          <button mat-raised-button class="submit-button" type="submit" >Send</button>
+      </form>
 
 
     </mat-card>

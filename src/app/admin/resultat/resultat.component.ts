@@ -76,21 +76,6 @@ export class ResultatComponent implements OnInit {
 
   }
   options: string[] = [
-    'MNI test: Anticorps heterophiles',
-'acide amine essentiel',
-'bon cholesterol',
-'mauvais cholesterol',
-'1-25-dihydroxy-vitamine D (Calcitriol) ',
-'17-Hydroxyprogesterone',
-'17-OH progesterone',
-'17-OHP',
-'25 OH vitamine D; 1-25 diOH vitamin D',
-'25-hydroxy-vitamine D (Calcidiol)',
-'5-HIM',
-'-VCA IgM/IgG',
-'virus Epstein-Barr',
-'du virus Epstein-Barr',
-'EAD',
 'Al AT; MT',
 'Al c',
 'MP',
@@ -730,6 +715,21 @@ export class ResultatComponent implements OnInit {
 'Triglythrides',
 'Triiodothyronine',
 'Troponine',
+'MNI test: Anticorps heterophiles',
+'acide amine essentiel',
+'bon cholesterol',
+'mauvais cholesterol',
+'1-25-dihydroxy-vitamine D (Calcitriol) ',
+'17-Hydroxyprogesterone',
+'17-OH progesterone',
+'17-OHP',
+'25 OH vitamine D; 1-25 diOH vitamin D',
+'25-hydroxy-vitamine D (Calcidiol)',
+'5-HIM',
+'-VCA IgM/IgG',
+'virus Epstein-Barr',
+'du virus Epstein-Barr',
+'EAD',
   ];
 
 }

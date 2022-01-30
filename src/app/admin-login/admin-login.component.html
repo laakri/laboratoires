@@ -1,14 +1,9 @@
 
 
-<mat-card>
-  <form (submit)="onSignup(signupForm)" #signupForm="ngForm" >
-    <h1>Sign Up</h1>
 
-      <mat-form-field appearance="fill">
-      <mat-label>Enter your name</mat-label>
-      <input matInput type="text" ngModel name="nom" #nom="ngModel"  required >
-      <mat-error *ngIf="nom.invalid">you must enter a value</mat-error>
-      </mat-form-field>
+  <form (submit)="onLogin(signupForm)" #signupForm="ngForm" >
+    <h1>Sign In As Admin</h1>
+    <mat-icon class="icon" aria-hidden="false" aria-label="croix" mat-dialog-close>clear</mat-icon>
 
       <mat-form-field  appearance="fill">
         <mat-label>Enter your Phone</mat-label>
@@ -20,16 +15,15 @@
 
       <mat-form-field appearance="fill">
       <mat-label>Enter password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" #pst="ngModel"  required >
-      <mat-error *ngIf="pst.invalid">you must enter a value</mat-error>
+      <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" #password="ngModel"  required >
+      <mat-error *ngIf="password.invalid">you must enter a value</mat-error>
 
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       </mat-form-field>
 
       <button mat-raised-button class="submit-button" type="submit">Submit</button>
-      <a routerLink="/auth/signin" style="text-decoration: underline; color: blue; position: absolute; bottom: 5px; right: 5px;" >Already have account</a>
   </form>
 
-  </mat-card>
+

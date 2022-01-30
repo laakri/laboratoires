@@ -10,7 +10,7 @@
       <span class="example-spacer"></span>
       <div>
         <button mat-raised-button id="button1"routerLink="/admin/users"><i class="fas fa-syringe" style="font-size: 19px; margin-right: 8px; "></i>Patient</button>
-        <button mat-flat-button   id="button2"routerLink="/login-admin" ><i class="fas fa-user-md" style="font-size: 19px; margin-right: 8px; " ></i>Doctor</button>
+        <button mat-flat-button   id="button2" (click)="log_admin()" ><i class="fas fa-user-md" style="font-size: 19px; margin-right: 8px; " ></i>Doctor</button>
       </div>
 
 </mat-toolbar>
@@ -21,15 +21,15 @@
   <a routerLink="main" ><span>LaboDeSante</span></a>
   <span class="example-spacer"></span>
   <div>
-  <a mat-button >Marketplace</a>
+  <a *ngIf="!userIsAuthenticated " mat-button routerLinkActive="mat-primary" >Marketplace</a>
 
-  <a mat-button  >About us </a>
-  <a mat-button routerLink="/contact" >Contact </a>
+  <a  mat-button routerLinkActive="mat-primary" >About us </a>
+  <a mat-button routerLink="/contact" routerLinkActive="mat-primary">Contact </a>
   <a  *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fa-user-check fa-xs"></i></a>
   <a  *ngIf="!userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fas fa-user fa-xs" ></i></a>
 <mat-menu #menu="matMenu">
   <a *ngIf="!userIsAuthenticated" mat-menu-item routerLink="auth" >Login</a>
-  <a *ngIf="userIsAuthenticated" routerLink="Clientpage" mat-menu-item >Profile</a>
+  <a *ngIf="userIsAuthenticated" routerLink="clientpage" mat-menu-item >Profile</a>
   <a *ngIf="userIsAuthenticated" mat-menu-item (click)="onLogout()">Logout</a>
 </mat-menu>
 </div>

@@ -6,7 +6,6 @@ import { AdduserComponent } from './../adduser/adduser.component';
 import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from 'src/app/auth/signup/user.service';
 import { Subscription } from 'rxjs';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-users',

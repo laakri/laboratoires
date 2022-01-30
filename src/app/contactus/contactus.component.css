@@ -1,30 +1,31 @@
-.main-mainpage{
-  background: url(../../assets/contacus.jpg);
+.background-image-blur{
+  background-image: url(../../assets/dna-163710.jpg);
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
+  height: 550px;
+  width: 100%;
   position: absolute;
-  height: 100%;
-  width: 108%;
   filter: blur(100px);
   -webkit-filter: blur(100px);
-  z-index: -11;
+  z-index: -1;
+  /*filter: brightness(1.2);*/
 }
+
 .mainpage{
   max-width: 1200px;
   margin: auto auto 40px auto;
-  min-height: 550px;
-  font-family: 'Noto Sans JP', sans-serif;
-  z-index: 100;
+  min-height: 600px;
+
 }
 
 .first-content{
-  color: aliceblue;
   margin: 40px auto 40px auto;
   text-align: center;
   height: 160px;
-  width: 70%;
+  width: 80%;
 }
+
 .first-content h1{
   font-size: 35px;
 }
@@ -33,43 +34,39 @@
   font-size: 20px;
 }
 .secend-content{
-  height: 410px;
-  margin: 0 auto 50px auto;
+  min-height: 410px;
+  margin: 0 auto 70px auto;
   display: flex;
   width: 80%;
   justify-content: space-between;
 }
 .secend-content-first{
-  width: 40%;
-  margin-top: 20px;
+  width: 45%;
 }
 
-
   .secend-content-info{
-    color: white;
-    height: 120px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    min-height: 80px;
     display: flex;
     font-weight: 100;
-  }
-  .text-div{
-    margin-top: 10px;
-  }
-  .text-div p {
-    font-size: 23px;
-  }
-  .text-div span{
-    font-size:15px ;
-    letter-spacing: 1px;
-    color: rgb(228, 228, 228);
+    margin: 30px auto;
 
   }
+  .text-div p {
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .text-div span{
+    color: rgb(65, 65, 65);
+    font-size:17px ;
+    font-weight: 400;
+  }
   .icon-div{
-    color: rgb(1, 0, 63);
-    background-color: white;
-    width: 55px;
+    color: var(--secendcolor);
+    background-color: var(--maincolor);
+    min-width: 55px;
     height:55px;
     border-radius: 50%;
-    margin-top: 15px;
     margin-right: 30px;
     text-align: center;
     vertical-align: middle;
@@ -80,12 +77,63 @@
   }
 
 .secend-content-secend{
-  width: 60%;
+  width: 50%;
 }
 .secend-content-secend mat-card {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 90%;
   height: 90%;
 }
 mat-divider{
   background-color: rgb(226, 226, 226);
+}
+mat-card:hover{
+  transform: scale(1.01);
+  cursor: default;
+}
+
+.secend-content-secend h1{
+text-align: center;
+}
+/*************************************/
+
+mat-form-field{
+  margin: auto;
+  width: 70%;
+
+}
+.submit-button{
+width: 50%;
+margin: auto;
+margin-bottom: 10px;
+color: var(--secendcolor);
+background-color: var(--maincolor);
+}
+
+form {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.icon{
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+}
+/********************Screen***************************/
+@media only screen and (max-width: 1150px) {
+  .secend-content {
+    flex-direction: column;
+  }
+  .secend-content-first{
+    margin: auto;
+    width: 80%;
+  }
+  .secend-content-secend{
+    margin: auto;
+    width: 80%;
+  }
+
 }

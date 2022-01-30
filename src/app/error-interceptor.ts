@@ -18,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         this._snackBar.openFromComponent(ErrorComponent,
           {data :{message :errorMessage},
           duration: 2500,
-          panelClass: ['blue-snackbar']
+          panelClass: ['red-snackbar']
         });
         return throwError(error);
       })

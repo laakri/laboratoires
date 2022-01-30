@@ -1,4 +1,6 @@
+import { ContactusService } from './cantactus.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contactus',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactusComponent implements OnInit {
 
-  constructor() { }
+  constructor(public ContactusService:ContactusService) { }
 
   ngOnInit(): void {
   }
 
+  onSignup(form : NgForm ){
+    if (form.invalid){
+      return;
+    }
+    this.ContactusService.sendMail(form.value.nom, form.value.email  , form.value.textA);
+    form.value.nom = " ";
+  }
 }
