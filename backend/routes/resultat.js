@@ -1,7 +1,7 @@
 const express =require("express");
 const Resultat = require("../models/resultat");
 const router = express.Router();
-const checkAuth =require("../middleware/check-admin")
+const checkAuth =require("../middleware/check-user")
 const multer = require("multer")
 
 const MIME_TYPE_MAP = {

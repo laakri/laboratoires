@@ -1,4 +1,3 @@
-import { UsersService } from 'src/app/auth/signup/user.service';
 import { Injectable } from "@angular/core";
 import { Admin } from "./admin.model";
 import {Subject}from 'rxjs'
@@ -18,7 +17,7 @@ export class AdminsService {
   private adminUpdated = new Subject<Admin[]>();
 
 
-  constructor(private http: HttpClient, private router: Router,public UsersService:UsersService) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   addAdmin(  name : string ,tel :string,  password :string){
@@ -70,7 +69,6 @@ export class AdminsService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate,this.adminId,this.adminName);
-          console.log(this.isAuthenticated);
           this.router.navigate(["/admin/users"]);
         }
       });

@@ -7,6 +7,6 @@ module.exports = (req, res, next) => {
     req.userDatas = { tel: decodedToken.tel, userId: decodedToken.userId };
     next();
   } catch (error) {
-    res.status(401).json({ message: "Auth failed!" });
+    res.status(401).json({ message: "Auth failed as user!" });
   }
 };

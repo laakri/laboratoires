@@ -52,7 +52,7 @@ router.post("/login", (req, res, next) => {
       }
       const token = jwt.sign(
         { tel: fetchedAdmin.tel, adminId: fetchedAdmin._id },
-        "secret_this_should_be_longer_fdskl",
+        "this_is_the_best_website_security",
         { expiresIn: "1h" }
       );
       res.status(200).json({
