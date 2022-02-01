@@ -1,41 +1,67 @@
 .background-image-blur{
-  background-image: url(../../assets/dna-163710.jpg);
+  background-image: url(../../assets/banner1.png);
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 550px;
+  height: 300px;
   width: 100%;
-  position: absolute;
-  filter: blur(100px);
-  -webkit-filter: blur(100px);
   z-index: -1;
-  /*filter: brightness(1.2);*/
-}
-
-.mainpage{
-  max-width: 1200px;
-  margin: auto auto 40px auto;
-  min-height: 600px;
-
+  position: relative;
+  margin-bottom: 40px;
 }
 
 .first-content{
-  margin: 40px auto 40px auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto ;
   text-align: center;
-  height: 160px;
-  width: 80%;
+  height: max-content;
+  width: 250px;
 }
 
-.first-content h1{
-  font-size: 35px;
+.first-content p{
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
 }
-.first-content h3{
-  margin-top: 40px;
-  font-size: 20px;
+/*********************************/
+
+.mainpage{
+  max-width: 1200px;
+  margin:20px auto ;
+  min-height: 600px;
+
 }
+/*********************************/
+.content{
+  margin:  auto;
+  width: 90%;
+}
+.content-div{
+  margin: 50px 20px ;
+  line-height: 1.6;
+}
+.content-div span {
+  color: var(--maincolor);
+  font-size: 40px;
+  font-weight: lighter;
+}
+.content-div p {
+  line-height: 1.6;
+  font-weight: lighter;
+  font-size: 19px;
+  margin-top: 19px;
+}
+/*********************************/
+
 .secend-content{
   min-height: 410px;
-  margin: 0 auto 70px auto;
+  margin:  auto;
   display: flex;
   width: 80%;
   justify-content: space-between;

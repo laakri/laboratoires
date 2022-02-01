@@ -1,0 +1,79 @@
+.background-image-blur{
+  background-image: url(../../assets/banner2.png);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 300px;
+  width: 100%;
+  z-index: -1;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+
+
+.first-content{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto ;
+  text-align: center;
+  height: max-content;
+  width: 250px;
+}
+
+.first-content p{
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+}
+
+.mainpage{
+  max-width: 1200px;
+  margin: auto ;
+  min-height: 600px;
+
+}
+.content{
+  min-height: 410px;
+  margin:  auto;
+  width: 90%;
+}
+.content-div{
+  margin: 50px 20px ;
+}
+.content-div span {
+  color: var(--maincolor);
+  font-size: 40px;
+  font-weight: lighter;
+}
+.content-div p {
+  line-height: 1.6;
+  font-weight: lighter;
+  font-size: 19px;
+  margin-top: 19px;
+}
+.content-div h2{
+  color: var(--maincolor);
+  font-size: 18px;
+  margin-top: 20px;
+}
+/********************Screen***************************/
+@media only screen and (max-width: 1150px) {
+  .secend-content {
+    flex-direction: column;
+  }
+  .secend-content-first{
+    margin: auto;
+    width: 80%;
+  }
+  .secend-content-secend{
+    margin: auto;
+    width: 80%;
+  }
+
+}

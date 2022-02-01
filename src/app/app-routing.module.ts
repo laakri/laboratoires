@@ -15,6 +15,7 @@ import {AuthGuardAdmin}from './admin-login/admin.guard'
 import { ContactusComponent } from './contactus/contactus.component';
 import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 const routes: Routes = [
   { path: '', component: MainpageComponent },
@@ -40,7 +41,8 @@ const routes: Routes = [
 {path:'resultat-client',component:OneResultPageComponent,},
 {path:'clientpage',component:ClientpageComponent,canActivate: [AuthGuard]},
 {path:'contact',component:ContactusComponent,},
-{path:'login-admin',component:AdminLoginComponent,}
+{path:'login-admin',component:AdminLoginComponent,},
+{path:'about',component:AboutusComponent,}
 
 
 

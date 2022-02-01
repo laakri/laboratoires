@@ -25,6 +25,9 @@ import { ErrorComponent } from './error/error.component';
 import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AddadminComponent } from './admin/addadmin/addadmin.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SuccesComponent } from './succes/succes.component';
+import { AdduserComponent } from './admin/adduser/adduser.component';
 
 /* *******************MODELS******************** */
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -44,13 +47,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { AdduserComponent } from './admin/adduser/adduser.component';
 import {A11yModule} from '@angular/cdk/a11y';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { SuccesComponent } from './succes/succes.component';
 
 
 /* ********************************************* */
@@ -78,6 +79,7 @@ import { SuccesComponent } from './succes/succes.component';
     AdminLoginComponent,
     AddadminComponent,
     SuccesComponent,
+    AboutusComponent,
 
   ],
   imports: [

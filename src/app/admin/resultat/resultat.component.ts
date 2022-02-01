@@ -76,9 +76,9 @@ export class ResultatComponent implements OnInit {
 
   }
   options: string[] = [
-'Al AT; MT',
-'Al c',
-'MP',
+'AlAT-AAT',
+'Alc',
+'AAP',
 'ACAN',
 'ACE',
 'Acetaminophen',

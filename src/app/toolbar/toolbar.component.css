@@ -92,7 +92,10 @@ a{
 
 
 
-
+.responsive-hidden{
+  display: block;
+  visibility: hidden;
+}
 
 
 
@@ -105,10 +108,20 @@ a{
     display: none;
   }
 
+
 }
 
 @media only screen and (max-width: 700px) {
   .result-text-p{
+    display: none;
+  }
+
+}
+@media only screen and (max-width: 750px) {
+  .responsive-hidden{
+    visibility: visible;
+  }
+  .responsive-visible{
     display: none;
   }
 }

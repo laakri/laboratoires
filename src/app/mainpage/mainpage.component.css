@@ -12,6 +12,7 @@
   margin: 100px auto ;
   animation-name: slide-in-left;
   animation-duration: 1s;
+  margin-left: 10px;
 }
 
 .left-text-field-span{
@@ -216,20 +217,53 @@ button:hover{
 /**************** Screen *********************/
 
 @media only screen and (max-width: 1150px) {
+  .first-content-flexebility{
+    flex-direction: column;
+  }
   .secend-content-card {
     flex-direction: column;
   }
   .content-secend-content-card{
     margin: 10px auto ;
   }
-  .first-content-flexebility{
-    flex-direction: column;
-  }
+
   .right-card-field{
-    margin: auto auto 50px auto;
+    margin: auto;
+    margin-bottom: 50px;
+
   }
   .left-text-field{
     text-align: center;
   }
+  .left-text-field button{
+    margin-bottom: 10px;
+  }
+  .content-fourth-content-card-p{
+    display: none;
+
+  }
+  .content-fourth-content-card{
+    height: 150px;
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .content-fourth-content-card{
+    height: 100px;
+    width: 150px;
+    margin: auto;
+  }
+.fourth-content-card:nth-child(3){
+  display: none;
+}
 
 }
+@media only screen and (max-width: 600px) {
+
+  .right-card-field{
+    display: none;
+  }
+
+}
+
