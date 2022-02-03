@@ -23,7 +23,7 @@ export class ResultatsUserComponent implements OnInit {
     this.resultatId = params['userId'];
   });
 
-    this.ResultsService.getResults(this.resultatId);
+    this.ResultsService.getResultsAdmin(this.resultatId);
       this.resultSub = this.ResultsService.getResultUpdateListener()
       .subscribe((results:Result[]) => {
          this.results =results;

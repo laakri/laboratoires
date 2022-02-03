@@ -1,7 +1,7 @@
 const express =require("express");
 const Resultat = require("../models/resultat");
 const router = express.Router();
-const checkAuth =require("../middleware/check-user")
+const  { checkAuth, checkAuthAdmin } =require("../middleware/check-user");
 const multer = require("multer")
 
 const MIME_TYPE_MAP = {
@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
     cb(null, name + "-" + Date.now() + "." + ext);
   }
 });
-router.post('',checkAuth,multer({ storage: storage }).single("file"),
+router.post('',checkAuthAdmin,multer({ storage: storage }).single("file"),
  (req,res,next)=> {
   const url = req.protocol + "://" + req.get("host");
     const resultat = new Resultat({
@@ -50,7 +50,24 @@ router.post('',checkAuth,multer({ storage: storage }).single("file"),
     });
     });
 });
+/******************-Get as admin-**********/
+router.get('/data-admin/:id',checkAuthAdmin, (req,res,next)=> {
 
+  Resultat.find({userId: req.params.id})
+  .then(documents => {
+    res.status(200).json({
+      message : 'post runs seccesfully !',
+      results :documents
+    });
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({
+      error: err
+    });
+  });
+});
+/******************-Get as user-**********/
 router.get('/data/:id',checkAuth, (req,res,next)=> {
 
   Resultat.find({userId: req.params.id})
@@ -67,7 +84,7 @@ router.get('/data/:id',checkAuth, (req,res,next)=> {
     });
   });
 });
-
+/************************************** */
 router.get('/:code', (req,res,next)=> {
 
   Resultat.findOne({num: req.params.code})

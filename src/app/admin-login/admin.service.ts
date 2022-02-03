@@ -129,7 +129,7 @@ export class AdminsService {
     const expirationDate = localStorage.getItem("expiration");
     const adminId = localStorage.getItem("adminId");
     const adminName = localStorage.getItem("adminName");
-    if (!token || !expirationDate) {
+    if (!token || !expirationDate ||!adminId ||!adminName ) {
       return;
     }
     return {

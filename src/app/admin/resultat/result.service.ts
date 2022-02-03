@@ -54,6 +54,25 @@ export class ResultsService {
       this.resultUpdated.next([...this.results]);
     });
   }
+  getResultsAdmin(UserId: string){
+    this.http.get<{message :string, results :any}>('http://localhost:4401/api/resultats/data-admin/'+UserId)
+    .pipe(map((resultData) =>{
+      return resultData.results.map((result: {_id: any; num: any; object: any;filePath:any; createdAt: any; updatedAt: any; }) => {
+        return{
+        id: result._id,
+        num: result.num,
+        object: result.object,
+        filePath : result.filePath,
+        createdAt : result.createdAt,
+        updatedAt : result.updatedAt
+        };
+      });
+    }))
+    .subscribe(transformedResult => {
+      this.results = transformedResult;
+      this.resultUpdated.next([...this.results]);
+    });
+  }
   getResultUpdateListener(){
     return this.resultUpdated.asObservable();
   }

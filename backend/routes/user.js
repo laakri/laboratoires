@@ -3,8 +3,8 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const checkAuth =require("../middleware/check-user")
-const checkAuthAdmin =require("../middleware/check-admin")
+const  { checkAuth, checkAuthAdmin } =require("../middleware/check-user");
+
 
 
 
@@ -57,9 +57,7 @@ router.post("/login", (req, res, next) => {
         });
       }
       const token = jwt.sign(
-        { tel: fetchedUser.tel, userId: fetchedUser._id },
-        "secret_this_should_be_longer",
-        { expiresIn: "1h" }
+        { tel: fetchedUser.tel, userId: fetchedUser._id },"secret_this_should_be_longer",{ expiresIn: "1h" }
       );
       res.status(200).json({
         token: token,

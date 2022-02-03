@@ -174,7 +174,7 @@ export class UsersService {
     const expirationDate = localStorage.getItem("expiration");
     const userId = localStorage.getItem("userId");
     const userName = localStorage.getItem("userName");
-    if (!token || !expirationDate || userId==null) {
+    if (!token || !expirationDate ||!userId ||!userName ) {
       return;
     }
     return {

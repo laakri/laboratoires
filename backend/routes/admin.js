@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const Admin = require("../models/admin");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const checkAuth =require("../middleware/check-admin")
+const  { checkAuth, checkAuthAdmin } =require("../middleware/check-user");
 
 
 router.post("/signup", (req, res, next) =>{
