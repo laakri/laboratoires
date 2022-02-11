@@ -6,7 +6,7 @@ const router = express.Router();
 const  { checkAuth, checkAuthAdmin } =require("../middleware/check-user");
 
 
-router.post("/signup", (req, res, next) =>{
+router.post("/signup",checkAuthAdmin, (req, res, next) =>{
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const admin = new Admin({
@@ -31,7 +31,7 @@ router.post("/signup", (req, res, next) =>{
   });
 
 });
-
+/*
 router.post("/login", (req, res, next) => {
   let fetchedAdmin;
   Admin.findOne({ tel: req.body.tel })
@@ -69,7 +69,7 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-
+*/
 
 
 

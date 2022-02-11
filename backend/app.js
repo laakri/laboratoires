@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user");
 const resultatRoutes = require("./routes/resultat");
-const adminRoutes = require("./routes/admin");
+/*const adminRoutes = require("./routes/admin");*/
 const emailRoutes = require("./routes/email");
 
 
@@ -40,7 +40,7 @@ mongoose.connect(
     );
     res.setHeader(
       "Access-Control-Allow-Methods",
-      "GET , POST,PATCH,DELETE, OPTIONS"
+      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
 
     next();
@@ -48,7 +48,7 @@ mongoose.connect(
   });
 app.use("/api/resultats",resultatRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/admins", adminRoutes);
+/*app.use("/api/admins", adminRoutes);*/
 app.use("/api/email", emailRoutes);
 
 

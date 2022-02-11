@@ -68,8 +68,6 @@ export class UsersService {
     );
   }
 
-
-
   getToken() {
     return this.token;
   }
@@ -110,7 +108,6 @@ export class UsersService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate,this.userId,this.userName);
-
           this.router.navigate(["/clientpage"]);
         }
       });

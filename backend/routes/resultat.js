@@ -1,9 +1,8 @@
 const express =require("express");
 const Resultat = require("../models/resultat");
 const router = express.Router();
-const  { checkAuth, checkAuthAdmin } =require("../middleware/check-user");
 const multer = require("multer")
-
+const checkauth = require("../middleware/check-user")
 const MIME_TYPE_MAP = {
   "application/pdf": "pdf",
 };
@@ -23,7 +22,7 @@ const storage = multer.diskStorage({
     cb(null, name + "-" + Date.now() + "." + ext);
   }
 });
-router.post('',checkAuthAdmin,multer({ storage: storage }).single("file"),
+router.post('',multer({ storage: storage }).single("file"),
  (req,res,next)=> {
   const url = req.protocol + "://" + req.get("host");
     const resultat = new Resultat({
@@ -51,7 +50,7 @@ router.post('',checkAuthAdmin,multer({ storage: storage }).single("file"),
     });
 });
 /******************-Get as admin-**********/
-router.get('/data-admin/:id',checkAuthAdmin, (req,res,next)=> {
+router.get('/data-admin/:id', (req,res,next)=> {
 
   Resultat.find({userId: req.params.id})
   .then(documents => {
@@ -68,7 +67,7 @@ router.get('/data-admin/:id',checkAuthAdmin, (req,res,next)=> {
   });
 });
 /******************-Get as user-**********/
-router.get('/data/:id',checkAuth, (req,res,next)=> {
+router.get('/data/:id', checkauth,(req,res,next)=> {
 
   Resultat.find({userId: req.params.id})
   .then(documents => {

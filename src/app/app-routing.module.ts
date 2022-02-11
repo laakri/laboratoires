@@ -29,7 +29,7 @@ const routes: Routes = [
   ]
 },
 {path: 'admin',
-  component: AdminComponent,canActivate: [AuthGuardAdmin] ,
+  component: AdminComponent,
   children:[
    { path: '', redirectTo: '/admin/users', pathMatch: 'full' },
    {path:'users', component: UsersComponent},

@@ -1,5 +1,5 @@
 import { AuthInterceptor } from './auth/signup/user.interceptor';
-import {AuthInterceptorAdmin} from './admin-login/admin.interceptor'
+import {AuthInterceptorAdmin} from '././admin-login/admin.interceptor';
 import {ErrorInterceptor}from'./error-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
