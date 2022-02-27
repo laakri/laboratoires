@@ -80,14 +80,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     AddadminComponent,
     SuccesComponent,
     AboutusComponent,
-
   ],
   imports: [
+    MatToolbarModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
@@ -109,7 +108,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatSortModule,
     MatSnackBarModule,
     MatListModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},

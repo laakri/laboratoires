@@ -1,11 +1,20 @@
+.up-content{
+  width: 100%;
+background-color: #6dbae4;
+z-index: -1;
+position: relative;
+}
+
+
 .background-image-blur{
-  background-image: url(../../assets/banner1.png);
+  background-image: url(../../assets/banner11.png);
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
+  left: 0;
   height: 300px;
-  width: 100%;
-  z-index: -1;
+  width: 600px;
+  z-index: 1;
   position: relative;
   margin-bottom: 40px;
 }
@@ -20,6 +29,8 @@
   text-align: center;
   height: max-content;
   width: 250px;
+  z-index: 10;
+
 }
 
 .first-content p{

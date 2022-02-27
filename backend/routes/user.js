@@ -51,7 +51,6 @@ router.post("/login", (req, res, next) => {
           message: "Incorrect password !"
         });
       }
-
       const token = jwt.sign(
         { tel: fetchedUser.tel, userId: fetchedUser._id },
         "secret_this_should_be_longer",
@@ -62,6 +61,7 @@ router.post("/login", (req, res, next) => {
         expiresIn: 3600,
         userId: fetchedUser._id,
         userName: fetchedUser.name,
+        userRole:fetchedUser.roles[0],
       });
     })
     .catch(err => {
@@ -70,13 +70,6 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
-
-
-
-
-
-
-
 
 
 router.get('/data', (req,res,next)=> {
@@ -96,9 +89,38 @@ router.get('/data', (req,res,next)=> {
     });
   });
 });
+
+
+router.post("/signup/admin", (req, res, next) =>{
+  bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+      const user = new User({
+      name: req.body.name,
+      tel:  req.body.tel,
+      password : hash,
+      roles :["admin"]
+      });
+
+    user.save()
+    .then(result => {
+      res.status(201).json({
+        message:"user created!",
+      });
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        error: err,
+        message:"This phone number already exited !",
+      });
+    });
+
+  });
+
+});
+
 router.delete("/:id", (req, res, next) => {
   User.deleteOne({ _id: req.params.id }).then(result => {
-    console.log(result);
     res.status(200).json({ message: "User deleted !" })
   })
   .catch(err => {
@@ -108,7 +130,6 @@ router.delete("/:id", (req, res, next) => {
     });
   });
 });
-
 
 
 module.exports = router;

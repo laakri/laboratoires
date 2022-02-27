@@ -14,7 +14,7 @@ export class ResultatsUserComponent implements OnInit {
   private routeSub: Subscription | undefined;
   private resultatId: any;
   resultSub: Subscription = new Subscription;
-  displayedColumns: string[] = ['time', 'object', 'num','tele'];
+  displayedColumns: string[] = ['time', 'object', 'num','tele','delete'];
 
   constructor(public ResultsService:ResultsService,public route: ActivatedRoute) { }
 
@@ -32,5 +32,13 @@ export class ResultatsUserComponent implements OnInit {
 
 
   }
-
+  onDelete(ResulId :string){
+    this.ResultsService.deleteResult(ResulId);
+    console.log(ResulId)
+    this.ResultsService.getResultsAdmin(this.resultatId);
+    this.resultSub = this.ResultsService.getResultUpdateListener()
+    .subscribe((results:Result[]) => {
+       this.results =results;
+      });
+  }
 }

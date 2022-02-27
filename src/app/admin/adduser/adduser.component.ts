@@ -2,7 +2,6 @@ import { UsersService } from './../../auth/signup/user.service';
 import { Component, OnInit } from '@angular/core';
 import {  NgForm  } from '@angular/forms';
 
-
 @Component({
   selector: 'app-adduser',
   templateUrl: './adduser.component.html',
@@ -10,9 +9,6 @@ import {  NgForm  } from '@angular/forms';
 })
 export class AdduserComponent implements OnInit {
   hide = true;
-
-
-
   constructor(public UsersService:UsersService) { }
 
   ngOnInit(): void {

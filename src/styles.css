@@ -39,3 +39,9 @@ ul{
   background: #088f1f;
   color: #ffffff;
 }
+.info-text {
+  font-size: large;
+  text-align: center;
+  padding-bottom: 30px ;
+  color: rgb(70, 70, 70);
+}

@@ -16,10 +16,10 @@
   </mat-card>
 
   <mat-card class="main-card" >
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>Client Role</mat-card-title>
+    <mat-card-subtitle>{{userRole}}</mat-card-subtitle>
     <mat-divider inset></mat-divider>
-    <mat-card-content><mat-icon >alarm</mat-icon><p>Monday 17:00:00</p></mat-card-content>
+    <mat-card-content><mat-icon >verified_user</mat-icon><p>Verified</p></mat-card-content>
   </mat-card>
 </div>
 
@@ -59,6 +59,7 @@
 
   </table>
 
+  <div class="info-text mat-body-1" *ngIf="results.length <= 0 ">No posts added yet!</div>
 
 
 </div>

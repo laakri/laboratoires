@@ -7,12 +7,12 @@ import {map} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SuccesComponent } from "src/app/succes/succes.component";
 
-
 @Injectable({providedIn: 'root'})
 export class UsersService {
   private isAuthenticated = false;
   private userId :any;
   private userName:any;
+  private userRole:any;
   private token: any;
   private tokenTimer: any;
   private users :User[] = [];
@@ -52,9 +52,9 @@ export class UsersService {
     }
     );
   }
-  addUserAdmin(  name : string ,tel :string,  password :string){
-    const user :User= {name :name ,tel :tel,  password :password};
-    this.http.post<{message :string }>('http://localhost:4401/api/users/signup', user)
+  addUserAdmin(  name : string ,tel :string,  password :string ){
+    const user :User= {name :name ,tel :tel,  password :password };
+    this.http.post<{message :string }>('http://localhost:4401/api/users/signup/admin', user)
     .subscribe(() => {
       const  successMessage ="Success !";
       this._snackBar.openFromComponent( SuccesComponent,
@@ -78,6 +78,9 @@ export class UsersService {
   getUserName(){
     return this.userName;
   }
+  getUserRole(){
+    return this.userRole;
+  }
   getIsAuth() {
     return this.isAuthenticated;
   }
@@ -92,7 +95,7 @@ export class UsersService {
       name: ""
     };
     this.http
-      .post<{ token: string; expiresIn: number;userId:string;userName:string; }>(
+      .post<{ token: string; expiresIn: number;userId:string; userName:string; userRole:string; }>(
         "http://localhost:4401/api/users/login",user)
       .subscribe(response => {
         const token = response.token;
@@ -103,13 +106,16 @@ export class UsersService {
           this.isAuthenticated = true;
           this.userId = response.userId;
           this.userName = response.userName;
+          this.userRole = response.userRole;
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
-          this.saveAuthData(token, expirationDate,this.userId,this.userName);
+          this.saveAuthData(token, expirationDate,this.userId,this.userName,this.userRole);
           this.router.navigate(["/clientpage"]);
         }
+      },error => {
+        this.authStatusListener.next(false);
       });
   }
   autoAuthUser() {
@@ -124,6 +130,7 @@ export class UsersService {
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
       this.userName = authInformation.userName;
+      this.userRole = authInformation.userRole;
 
 
       this.setAuthTimer(expiresIn / 1000);
@@ -136,6 +143,7 @@ export class UsersService {
     this.authStatusListener.next(false);
     this.userId = null;
     this.userName = null;
+    this.userRole= null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     console.log("Logout runs seccesfully!")
@@ -149,11 +157,12 @@ export class UsersService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date, userId: string, userName: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string, userName: string,userRole:string) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiration", expirationDate.toISOString());
     localStorage.setItem("userId", userId);
     localStorage.setItem("userName", userName);
+    localStorage.setItem("userRole", userRole);
 
 
   }
@@ -163,6 +172,7 @@ export class UsersService {
     localStorage.removeItem("expiration");
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
+    localStorage.removeItem("userRole");
 
   }
 
@@ -171,14 +181,17 @@ export class UsersService {
     const expirationDate = localStorage.getItem("expiration");
     const userId = localStorage.getItem("userId");
     const userName = localStorage.getItem("userName");
-    if (!token || !expirationDate ||!userId ||!userName ) {
+    const userRole = localStorage.getItem("userRole");
+
+    if (!token || !expirationDate  ) {
       return;
     }
     return {
       token: token,
       expirationDate: new Date(expirationDate),
       userId: userId,
-      userName:userName
+      userName:userName,
+      userRole:userRole
 
     }
   }

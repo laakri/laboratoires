@@ -1,4 +1,4 @@
-import { AdminsService } from './../../admin-login/admin.service';
+import { UsersService } from 'src/app/auth/signup/user.service';
 import { Component, OnInit } from '@angular/core';
 import {  NgForm} from '@angular/forms';
 
@@ -9,7 +9,7 @@ import {  NgForm} from '@angular/forms';
 })
 export class AddadminComponent implements OnInit {
   hide = true;
-  constructor(public AdminsService:AdminsService) { }
+  constructor(public UsersService:UsersService) { }
 
   ngOnInit(): void {
   }
@@ -17,6 +17,6 @@ export class AddadminComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.AdminsService.addAdmin(form.value.nom, form.value.tel  , form.value.password);
+    this.UsersService.addUserAdmin(form.value.nom, form.value.tel  , form.value.password);
   }
 }

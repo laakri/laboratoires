@@ -9,8 +9,7 @@
 
       <span class="example-spacer"></span>
       <div>
-        <button mat-raised-button id="button1"routerLink="/admin/users"><i class="fas fa-syringe" style="font-size: 19px; margin-right: 8px; "></i>Patient</button>
-        <button mat-flat-button   id="button2" (click)="log_admin()" ><i class="fas fa-user-md" style="font-size: 19px; margin-right: 8px; " ></i>Doctor</button>
+        <button  mat-flat-button   id="button2"routerLink="/admin/users"><i class="fas fa-user-md"  ></i>Doctor</button>
       </div>
 
 </mat-toolbar>
@@ -18,7 +17,7 @@
 
 <mat-toolbar class="main-toolbar" >
   <img src="../../assets/logo1.png" alt="logo">
-  <a routerLink="main" ><span>LaboDeSante</span></a>
+  <a routerLink="main" ><span>Laboratoire Chebba</span></a>
   <span class="example-spacer"></span>
 
 
@@ -51,7 +50,6 @@
 
 
   <div class="responsive-visible">
-  <a *ngIf="!userIsAuthenticated " mat-button routerLinkActive="mat-primary" >Marketplace</a>
   <a  mat-button routerLinkActive="mat-primary" routerLink="/about" >About us </a>
   <a mat-button routerLink="/contact" routerLinkActive="mat-primary">Contact </a>
   <a  *ngIf="userIsAuthenticated" [matMenuTriggerFor]="menu" ><i class="fas fa-user-check fa-xs"></i></a>

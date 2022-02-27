@@ -13,6 +13,7 @@ export class ClientpageComponent implements OnInit {
     results : Result[]=[];
     public userId :any;
     public userName :any;
+    public userRole :any;
     displayedColumns: string[] = ['time', 'object', 'num','tele'];
     numRows = 0;
     date:Date | undefined;
@@ -29,6 +30,7 @@ export class ClientpageComponent implements OnInit {
     ngOnInit(): void {
       this.userId= this.UsersService.getUserId();
       this.userName = this.UsersService.getUserName();
+      this.userRole = this.UsersService.getUserRole();
       this.ResultsService.getResults(this.userId);
       this.resultSub = this.ResultsService.getResultUpdateListener()
       .subscribe((results:Result[]) => {

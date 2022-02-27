@@ -2,7 +2,7 @@
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 50px;
-  min-height: 460px;
+  min-height: 550px;
 }
 
 .main-cards{
@@ -67,3 +67,4 @@ table:nth-child(3){
   width: 100px;
   color: blue;
 }
+

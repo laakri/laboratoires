@@ -1,16 +1,23 @@
-.background-image-blur{
-  background-image: url(../../assets/banner2.png);
-  object-fit: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 300px;
+.up-content{
   width: 100%;
-  z-index: -1;
-  position: relative;
-  margin-bottom: 40px;
+background-color: #94bceb;
+z-index: -1;
+position: relative;
 }
 
 
+.background-image-blur{
+  background-image: url(../../assets/banner22.png);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 0;
+  height: 300px;
+  width: 600px;
+  z-index: 1;
+  position: relative;
+  margin-bottom: 40px;
+}
 
 .first-content{
   position: absolute;
@@ -22,6 +29,8 @@
   text-align: center;
   height: max-content;
   width: 250px;
+  z-index: 10;
+
 }
 
 .first-content p{
@@ -31,7 +40,7 @@
   vertical-align: middle;
   line-height: 90px;
 }
-
+/*********************************/
 .mainpage{
   max-width: 1200px;
   margin: auto ;

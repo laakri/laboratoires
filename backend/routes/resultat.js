@@ -67,7 +67,7 @@ router.get('/data-admin/:id', (req,res,next)=> {
   });
 });
 /******************-Get as user-**********/
-router.get('/data/:id', checkauth,(req,res,next)=> {
+router.get('/data/:id', (req,res,next)=> {
 
   Resultat.find({userId: req.params.id})
   .then(documents => {
@@ -83,6 +83,21 @@ router.get('/data/:id', checkauth,(req,res,next)=> {
     });
   });
 });
+
+/************************************** */
+router.delete("/delete/:id", (req, res, next) => {
+  Resultat.deleteOne({ _id: req.params.id })
+  .then(result => {
+    res.status(200).json({ message: "Result deleted !" })
+  })
+  .catch(err => {
+    console.log(err);
+    return res.status(500).json({
+      message: "Problem In deleting Results !"
+    });
+  });
+});
+
 /************************************** */
 router.get('/:code', (req,res,next)=> {
 
@@ -102,10 +117,6 @@ router.get('/:code', (req,res,next)=> {
     });
   });
 });
-
-
-
-
 
 
 

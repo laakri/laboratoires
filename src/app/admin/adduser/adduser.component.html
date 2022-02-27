@@ -19,14 +19,15 @@
         <mat-error *ngIf="tel.invalid">you must enter a value</mat-error>
         </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Enter password</mat-label>
-    <input matInput ngModel name="password" #password="ngModel"  required >
-    <mat-error *ngIf="password.invalid">you must enter a value</mat-error>
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password" #pst="ngModel"  required >
+          <mat-error *ngIf="pst.invalid">you must enter a value</mat-error>
+
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          </mat-form-field>
 
     <button mat-raised-button class="submit-button" type="submit" mat-dialog-close>Submit</button>
 </form>

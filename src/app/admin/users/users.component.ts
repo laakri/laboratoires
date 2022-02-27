@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class UsersComponent implements OnInit {
   users: User[]=[];
-  displayedColumns: string[] = ['tel', 'name', 'add_result','Results', 'Edit', 'Delete'];
+  displayedColumns: string[] = ['tel', 'name', 'add_result','Results', 'Delete'];
   isLoading = false;
 
   @ViewChild(MatPaginator)

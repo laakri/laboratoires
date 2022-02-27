@@ -11,7 +11,7 @@ import { ResultatComponent } from './admin/resultat/resultat.component';
 import { EditComponent } from './admin/users/edit/edit.component';
 import { OneResultPageComponent } from './one-result-page/one-result-page.component';
 import { AuthGuard } from './auth/signup/user.guard';
-import {AuthGuardAdmin}from './admin-login/admin.guard'
+import {AuthGuardAdmin}from './auth/signup/admin.guard'
 import { ContactusComponent } from './contactus/contactus.component';
 import { ResultatsUserComponent } from './admin/resultats-user/resultats-user.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
   ]
 },
 {path: 'admin',
-  component: AdminComponent,
+  component: AdminComponent,canActivate: [AuthGuardAdmin],
   children:[
    { path: '', redirectTo: '/admin/users', pathMatch: 'full' },
    {path:'users', component: UsersComponent},

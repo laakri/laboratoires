@@ -92,5 +92,7 @@ export class ResultsService {
     }
     );
   }
-
+  deleteResult(postId: string) {
+    return this.http.delete("http://localhost:4401/api/resultats/delete/" + postId);
+  }
 }

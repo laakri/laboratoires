@@ -10,9 +10,9 @@ import { UsersService } from './../auth/signup/user.service';
 export class ToolbarComponent implements OnInit,OnDestroy {
   userIsAuthenticated = false;
   adminIsAuthenticated = false;
+  userIsAdminCheck=false;
+  userIsAdmin: any;
   private authListenerSubs!: Subscription;
-  private AdminauthListenerSubs!: Subscription;
-
   date:Date | undefined;
   constructor( public UsersService:UsersService ,public dialog:MatDialog,){
     setInterval(() => {
@@ -21,13 +21,14 @@ export class ToolbarComponent implements OnInit,OnDestroy {
   }
 
   ngOnInit(): void {
+
     this.userIsAuthenticated =this.UsersService.getIsAuth();
     this.authListenerSubs=this.UsersService.getAuthStatusListener()
     .subscribe(isAuthenticated =>{
     this.userIsAuthenticated = isAuthenticated;
-
-
     });
+
+
   }
   ngOnDestroy(): void {
 
