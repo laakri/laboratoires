@@ -7,15 +7,11 @@ const userRoutes = require("./routes/user");
 const resultatRoutes = require("./routes/resultat");
 const emailRoutes = require("./routes/email");
 
-
-
-
 const app = express();
 
-
-
 //conection to data
-mongoose.connect(
+mongoose
+  .connect(
     "mongodb+srv://laakri:s8R9DM2NMRst2sdh@cluster0.2cxzf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
   )
   .then(() => {
@@ -25,29 +21,32 @@ mongoose.connect(
     console.log("Connection failed!");
   });
 
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended :false}));
-  app.use("/file-folder", express.static(path.join("backend/file-folder")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/file-folder", express.static(path.join("backend/file-folder")));
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
 
-  app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin","*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-requested-With, Content-Type, Accept,Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
 
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Origin, X-requested-With, Content-Type, Accept,Authorization"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-    );
-
-    next();
-
-  });
-app.use("/api/resultats",resultatRoutes);
+  next();
+});
+app.use("/api/resultats", resultatRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/email", emailRoutes);
 
+// angular static
+app.use(express.static(path.join(__dirname, "./../dist/LABO")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "..", "dist", "LABO", "index.html"));
+});
 
 module.exports = app;
